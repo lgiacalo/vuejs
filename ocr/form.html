@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+      integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+      crossorigin="anonymous"
+    />
+    <title>Formulaire Vue js</title>
+    <style>
+      #app {
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app" class="ui container">
+      <form class="ui form segment">
+        <div class="two fields">
+          <div class="field">
+            <label for="username">Nom d'utilisateur</label>
+            <input
+              id="username"
+              type="text"
+              v-model="username"
+              @keyup.enter="enterUsername"
+            />
+          </div>
+          <div class="field">
+            <label for="pw">Mot de passe</label>
+            <input id="pw" type="password" v-model="password" />
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          username: "",
+          password: "",
+        },
+        methods: {
+          enterUsername() {
+            console.log(this.username);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
