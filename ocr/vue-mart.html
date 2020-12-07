@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+      integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+      crossorigin="anonymous"
+    />
+    <title>Vue Mart</title>
+  </head>
+
+  <body>
+    <main id="app" class="ui main container">
+      <h1>VueMart</h1>
+
+      <h2>Panier</h2>
+      <ul>
+        <li v-for="item in shoppingCart" v-if="item.cost">
+          <a :href="item.url">{{item.label}}</a>: {{ item.cost}}€
+        </li>
+      </ul>
+      <p>Total: {{ totalPrice }}€</p>
+
+      <h2>Horaires d'ouverture</h2>
+      <p>Dimanche: 10h - 16h</p>
+      <p>Du lundi au vendredi : 09h - 17h</p>
+      <p>Samedi : 09h30 - 18h00</p>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          restaurantName: "La belle vue",
+          shoppingCart: [
+            { label: "Pommes", cost: 10, url: "./pommes.html" },
+            { label: "Bananes", cost: 2, url: "./bananes.html" },
+            { label: "Noix de coco", cost: 28, url: "./coconuts.html" },
+          ],
+        },
+        computed: {
+          totalPrice() {
+            return this.shoppingCart.reduce((acc, c) => acc + c.cost, 0);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
