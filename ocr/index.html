@@ -26,19 +26,112 @@
           verrez qu'il est difficile de s'arrêter.
         </p>
 
-        <h2>Contactez nous</h2>
-        <p>Adresse : {{ addresse }}</p>
-        <p>Téléphone : {{ phone }}</p>
-        <p>Email : {{ email }}</p>
-        <p>Horaires :</p>
-        <ul>
-          <li>L-V: 06:00 à 16:00</li>
-          <li>Samedi: 07:00 à 14:00</li>
-          <li>Dimanche: 07:00 à 12:00</li>
-        </ul>
+        <section class="menu">
+          <h2>Menu</h2>
+
+          <div class="ui centered three column grid">
+            <div class="column">
+              <div class="menu-item ui fluid card">
+                <img
+                  class="menu-item__image"
+                  src="https://via.placeholder.com/300x150"
+                  alt=""
+                />
+                <div>
+                  <h3>Nom de l'article</h3>
+                  <p>En stock</p>
+                  <p>En rupture de stock</p>
+                  <div class="ui medium form">
+                    <div class="field">
+                      <label for="add-item-quantity">Quantité:</label>
+                      <div class="field">
+                        <input id="add-item-quantity" type="number" />
+                      </div>
+                    </div>
+
+                    <button class="fluid ui button">
+                      Ajouter au panier d'achat
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="menu-item ui fluid card">
+                <img
+                  class="menu-item__image"
+                  src="https://via.placeholder.com/300x150"
+                  alt=""
+                />
+                <div>
+                  <h3>Nom de l'article</h3>
+                  <p>En stock</p>
+                  <p>En rupture de stock</p>
+                  <div class="ui medium form">
+                    <div class="field">
+                      <label for="add-item-quantity">Quantité:</label>
+                      <div class="field">
+                        <input id="add-item-quantity" type="number" />
+                      </div>
+                    </div>
+
+                    <button class="fluid ui button">
+                      Ajouter au panier d'achat
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="menu-item ui fluid card">
+                <img
+                  class="menu-item__image"
+                  src="https://via.placeholder.com/300x150"
+                  alt=""
+                />
+                <div>
+                  <h3>Nom de l'article</h3>
+                  <p>En stock</p>
+                  <p>En rupture de stock</p>
+                  <div class="ui medium form">
+                    <div class="field">
+                      <label for="add-item-quantity">Quantité:</label>
+                      <!-- <div class="field"> -->
+                      <input id="add-ite-quantity" type="number" />
+                      <!-- </div> -->
+                    </div>
+
+                    <button class="fluid ui button">
+                      Ajouter au panier d'achat
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="shopping-cart">
+          <h2>Panier d'achat: 0 articles</h2>
+        </aside>
+
+        <div>
+          <h2>Contactez nous</h2>
+          <p>Adresse : {{ addresse }}</p>
+          <p>Téléphone : {{ phone }}</p>
+          <p>Email : {{ email }}</p>
+          <p>Horaires :</p>
+          <ul>
+            <li>L-V: 06:00 à 16:00</li>
+            <li>Samedi: 07:00 à 14:00</li>
+            <li>Dimanche: 07:00 à 12:00</li>
+          </ul>
+        </div>
       </main>
       <footer class="ui inverted vertical footer segment form-page">
-        <p>{{ copyright }}</p>
+        <p class="ui container">{{ copyright }}</p>
       </footer>
     </div>
 
@@ -51,6 +144,35 @@
           addresse: "18 avenue du Beurre, Paris, France",
           phone: "01 88 88 88 88",
           email: "hello@cafewithavue.bakery",
+          simpleMenu: [
+            {
+              name: "Croissant",
+              image: {
+                source: "./images/croissant.jpg",
+                alt: "Un croissant",
+              },
+              inStock: true,
+              quantity: 1,
+            },
+            {
+              name: "Baguette de pain",
+              image: {
+                source: "./images/french-baguette.jpeg",
+                alt: "Quatre baguettes de pain",
+              },
+              inStock: true,
+              quantity: 1,
+            },
+            {
+              name: "Éclair",
+              image: {
+                source: "./images/eclair.jpg",
+                alt: "Éclair au chocolat",
+              },
+              inStock: false,
+              quantity: 1,
+            },
+          ],
         },
         computed: {
           copyright: function () {

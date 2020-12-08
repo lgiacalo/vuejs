@@ -1,8 +1,13 @@
-@media (min-height: 320px) {
+/* @media (min-height: 320px) {
 
   .ui.footer.form-page { 
     position: absolute;
     bottom: 0;
     width: 100%;
   }
+} */
+
+main,  aside.shopping-cart{
+ margin: 20px auto; 
 }
+
