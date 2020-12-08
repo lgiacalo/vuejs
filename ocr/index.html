@@ -30,82 +30,31 @@
           <h2>Menu</h2>
 
           <div class="ui centered three column grid">
-            <div class="column">
-              <div class="menu-item ui fluid card">
-                <img
-                  class="menu-item__image"
-                  src="https://via.placeholder.com/300x150"
-                  alt=""
-                />
-                <div>
-                  <h3>Nom de l'article</h3>
-                  <p>En stock</p>
-                  <p>En rupture de stock</p>
+            <div class="column" v-for="item in simpleMenu">
+              <div class="ui fluid card">
+                <img :src="item.image.source" :alt="item.image.alt" />
+                <div class="ui content">
+                  <h3>{{item.name}}</h3>
+                  <p v-if="item.inStock">En stock</p>
+                  <p v-else>En rupture de stock</p>
                   <div class="ui medium form">
                     <div class="field">
                       <label for="add-item-quantity">Quantité:</label>
-                      <div class="field">
-                        <input id="add-item-quantity" type="number" />
-                      </div>
+                      <input
+                        id="add-ite-quantity"
+                        type="number"
+                        :disabled="!item.inStock"
+                        v-model.number="item.quantity"
+                      />
+
+                      <button
+                        class="fluid ui button"
+                        @click="addToShoppingCart(item.quantity)"
+                        :disabled="!item.inStock"
+                      >
+                        Ajouter au panier d'achat
+                      </button>
                     </div>
-
-                    <button class="fluid ui button">
-                      Ajouter au panier d'achat
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="column">
-              <div class="menu-item ui fluid card">
-                <img
-                  class="menu-item__image"
-                  src="https://via.placeholder.com/300x150"
-                  alt=""
-                />
-                <div>
-                  <h3>Nom de l'article</h3>
-                  <p>En stock</p>
-                  <p>En rupture de stock</p>
-                  <div class="ui medium form">
-                    <div class="field">
-                      <label for="add-item-quantity">Quantité:</label>
-                      <div class="field">
-                        <input id="add-item-quantity" type="number" />
-                      </div>
-                    </div>
-
-                    <button class="fluid ui button">
-                      Ajouter au panier d'achat
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="column">
-              <div class="menu-item ui fluid card">
-                <img
-                  class="menu-item__image"
-                  src="https://via.placeholder.com/300x150"
-                  alt=""
-                />
-                <div>
-                  <h3>Nom de l'article</h3>
-                  <p>En stock</p>
-                  <p>En rupture de stock</p>
-                  <div class="ui medium form">
-                    <div class="field">
-                      <label for="add-item-quantity">Quantité:</label>
-                      <!-- <div class="field"> -->
-                      <input id="add-ite-quantity" type="number" />
-                      <!-- </div> -->
-                    </div>
-
-                    <button class="fluid ui button">
-                      Ajouter au panier d'achat
-                    </button>
                   </div>
                 </div>
               </div>
@@ -114,7 +63,7 @@
         </section>
 
         <aside class="shopping-cart">
-          <h2>Panier d'achat: 0 articles</h2>
+          <h2>Panier d'achat: {{ shoppingCart }} articles</h2>
         </aside>
 
         <div>
@@ -144,6 +93,7 @@
           addresse: "18 avenue du Beurre, Paris, France",
           phone: "01 88 88 88 88",
           email: "hello@cafewithavue.bakery",
+          shoppingCart: 0,
           simpleMenu: [
             {
               name: "Croissant",
@@ -178,6 +128,11 @@
           copyright: function () {
             const currentYear = new Date().getFullYear();
             return `Copyright ${this.restaurantName} ${currentYear}`;
+          },
+        },
+        methods: {
+          addToShoppingCart(nb) {
+            this.shoppingCart += nb;
           },
         },
       });
