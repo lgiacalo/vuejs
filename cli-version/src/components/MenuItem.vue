@@ -25,7 +25,7 @@
           />
 
           <button
-            @click="addToShoppingCart(item.quantity)"
+            @click="updateShoppingCart(item.quantity)"
             :disabled="!item.inStock"
           >
             Ajouter au panier d'achat
@@ -44,15 +44,16 @@ export default {
       type: Object,
       required: true,
     },
-    addToShoppingCart: {
-      type: Function,
-      default: () => {},
-    },
   },
   data: function() {
     return {
       onSale: false,
     };
+  },
+  methods: {
+    updateShoppingCart(nb) {
+      this.$emit("add-items-to-cart", { quantity: nb });
+    },
   },
   beforeMount() {
     const today = new Date().getDate();

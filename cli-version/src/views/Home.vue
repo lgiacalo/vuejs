@@ -16,8 +16,8 @@
         <menu-item
           v-for="item in simpleMenu"
           v-bind:item="item"
-          v-bind:addToShoppingCart="addToShoppingCart"
           v-bind:key="item.name"
+          @add-items-to-cart="addToShoppingCart"
         />
       </section>
 
@@ -82,8 +82,8 @@ export default {
     },
   },
   methods: {
-    addToShoppingCart(nb) {
-      this.shoppingCart += nb;
+    addToShoppingCart(payload) {
+      this.shoppingCart += payload.quantity;
     },
   },
 };
