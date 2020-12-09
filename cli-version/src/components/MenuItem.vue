@@ -24,12 +24,11 @@
             v-model.number="item.quantity"
           />
 
-          <button
+          <BaseButton
             @click="updateShoppingCart(item.quantity)"
             :disabled="!item.inStock"
-          >
-            Ajouter au panier d'achat
-          </button>
+            text="Ajouter au panier d'achat"
+          />
         </div>
       </div>
     </div>
@@ -37,8 +36,11 @@
 </template>
 
 <script>
+import BaseButton from "./BaseButton";
+
 export default {
   name: "MenuItem",
+  components: { BaseButton },
   props: {
     item: {
       type: Object,
