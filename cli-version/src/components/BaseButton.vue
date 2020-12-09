@@ -1,14 +1,11 @@
 <template>
   <button v-on="$listeners">
-    {{ text }}
+    <slot name="text-button"></slot>
   </button>
 </template>
 
 <script>
 export default {
   name: "BaseButton",
-  props: {
-    text: String,
-  },
 };
 </script>

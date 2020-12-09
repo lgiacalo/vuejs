@@ -108,13 +108,6 @@ export default {
   align-items: center;
 }
 
-.menu-item {
-  display: flex;
-  width: 500px;
-  justify-content: space-between;
-  margin-bottom: 30px;
-}
-
 .shopping-cart {
   position: absolute;
   right: 30px;

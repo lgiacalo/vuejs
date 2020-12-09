@@ -27,8 +27,9 @@
           <BaseButton
             @click="updateShoppingCart(item.quantity)"
             :disabled="!item.inStock"
-            text="Ajouter au panier d'achat"
-          />
+          >
+            <template v-slot:text-button>Ajouter au panier d'achat</template>
+          </BaseButton>
         </div>
       </div>
     </div>
@@ -73,5 +74,12 @@ export default {
 <style lang="scss" scoped>
 .menu-item__image {
   max-width: 300px;
+}
+
+.menu-item {
+  display: flex;
+  width: 500px;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
 </style>
