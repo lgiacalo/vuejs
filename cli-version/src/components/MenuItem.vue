@@ -1,7 +1,11 @@
 <template>
-  <div class="ui fluid card">
-    <img :src="item.image.source" :alt="item.image.alt" />
-    <div class="ui content">
+  <div class="menu-item">
+    <img
+      class="menu-item__image"
+      :src="item.image.source"
+      :alt="item.image.alt"
+    />
+    <div>
       <h3>
         <router-link :to="{ name: 'Item', params: { name: item.name } }">{{
           item.name
@@ -10,8 +14,8 @@
       <p>Prix : {{ generatedPrice }}</p>
       <p v-if="item.inStock">En stock</p>
       <p v-else>En rupture de stock</p>
-      <div class="ui medium form">
-        <div class="field">
+      <div>
+        <div>
           <label for="add-item-quantity">Quantité:</label>
           <input
             id="add-ite-quantity"
@@ -21,7 +25,6 @@
           />
 
           <button
-            class="fluid ui button"
             @click="addToShoppingCart(item.quantity)"
             :disabled="!item.inStock"
           >
@@ -57,3 +60,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.menu-item__image {
+  max-width: 300px;
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <main class="ui main container">
+  <div>
+    <main>
       <h1>{{ restaurantName }}</h1>
 
       <p class="description">
@@ -13,23 +13,20 @@
       <section class="menu">
         <h2>Menu</h2>
 
-        <div class="ui centered three column grid">
-          <menu-item
-            class="column"
-            v-for="item in simpleMenu"
-            v-bind:item="item"
-            v-bind:addToShoppingCart="addToShoppingCart"
-            v-bind:key="item.name"
-          />
-        </div>
+        <menu-item
+          v-for="item in simpleMenu"
+          v-bind:item="item"
+          v-bind:addToShoppingCart="addToShoppingCart"
+          v-bind:key="item.name"
+        />
       </section>
 
       <aside class="shopping-cart">
         <h2>Panier d'achat: {{ shoppingCart }} articles</h2>
       </aside>
     </main>
-    <footer class="ui inverted vertical footer segment form-page">
-      <p class="ui container">{{ copyright }}</p>
+    <footer>
+      <p>{{ copyright }}</p>
     </footer>
   </div>
 </template>
@@ -92,13 +89,35 @@ export default {
 };
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<style lang="scss" scoped>
+.description {
+  max-width: 960px;
+  font-size: 1.2rem;
+  margin: 0 auto;
+}
+
+.footer {
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-style: italic;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-item {
+  display: flex;
+  width: 500px;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.shopping-cart {
+  position: absolute;
+  right: 30px;
+  top: 0;
 }
 </style>
