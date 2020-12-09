@@ -40,8 +40,14 @@
 export default {
   name: "MenuItem",
   props: {
-    item: Object,
-    addToShoppingCart: Function,
+    item: {
+      type: Object,
+      required: true,
+    },
+    addToShoppingCart: {
+      type: Function,
+      default: () => {},
+    },
   },
   data: function() {
     return {
