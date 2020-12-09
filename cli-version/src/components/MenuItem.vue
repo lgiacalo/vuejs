@@ -2,7 +2,11 @@
   <div class="ui fluid card">
     <img :src="item.image.source" :alt="item.image.alt" />
     <div class="ui content">
-      <h3>{{ item.name }}</h3>
+      <h3>
+        <router-link :to="{ name: 'Item', params: { name: item.name } }">{{
+          item.name
+        }}</router-link>
+      </h3>
       <p v-if="item.inStock">En stock</p>
       <p v-else>En rupture de stock</p>
       <div class="ui medium form">
