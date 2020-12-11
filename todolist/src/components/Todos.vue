@@ -25,6 +25,38 @@
         </li>
       </ul>
     </div>
+    <footer class="footer">
+      <span class="todo-count">
+        <strong class="">{{ remaining }}</strong>
+        Taches a faire
+      </span>
+      <ul class="filters">
+        <li>
+          <a
+            href="#"
+            :class="{ selected: filter === 'all' }"
+            @click.prevent="filter = 'all'"
+            >Toutes</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            :class="{ selected: filter === 'todo' }"
+            @click.prevent="filter = 'todo'"
+            >A faire</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            :class="{ selected: filter === 'done' }"
+            @click.prevent="filter = 'done'"
+            >Faites</a
+          >
+        </li>
+      </ul>
+    </footer>
   </section>
 </template>
 
@@ -40,6 +72,7 @@ export default {
         },
       ],
       newTodo: "",
+      filter: "all",
     };
   },
   methods: {
@@ -49,6 +82,11 @@ export default {
         name: this.newTodo,
       });
       this.newTodo = "";
+    },
+  },
+  computed: {
+    remaining: function() {
+      return this.todos.filter((todo) => !todo.completed).length;
     },
   },
 };
