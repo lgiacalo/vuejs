@@ -14,7 +14,7 @@
       <ul class="todo-list">
         <li
           class="todo"
-          v-for="todo in todos"
+          v-for="todo in filteredTodos"
           :class="{ completed: todo.completed }"
           :key="todo.name"
         >
@@ -87,6 +87,13 @@ export default {
   computed: {
     remaining: function() {
       return this.todos.filter((todo) => !todo.completed).length;
+    },
+    filteredTodos: function() {
+      if (this.filter === "todo")
+        return this.todos.filter((todo) => !todo.completed);
+      else if (this.filter === "done")
+        return this.todos.filter((todo) => todo.completed);
+      return this.todos;
     },
   },
 };
